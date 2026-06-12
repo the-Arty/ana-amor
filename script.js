@@ -124,18 +124,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.initStoryView) window.initStoryView();
 
             // Start playing background music
-            setTimeout(() => {
-                try {
-                    // Pre-activate both players so mobile doesn't block transitions on scroll
+            try {
+                // Pre-activate both players so mobile doesn't block transitions on scroll
+                if (playerEuphoria && playerEuphoria.playVideo) {
                     playerEuphoria.playVideo();
                     playerEuphoria.pauseVideo();
-                } catch (e) {
-                    console.log("Erro ao inicializar player secundário:", e);
                 }
+            } catch (e) {
+                console.log("Erro ao inicializar player secundário:", e);
+            }
 
-                playMusic('belo');
-                isMusicInitialized = true;
-            }, 500);
+            playMusic('belo');
+            isMusicInitialized = true;
 
             // Trigger initial confetti explosion
             confetti({
@@ -333,6 +333,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentSlideIndex < storySteps.length - 1) {
             currentSlideIndex++;
             updateStoryView();
+            
+            // Tentar reproduzir a música novamente caso tenha sido bloqueada no início
+            if (activePlayer && activePlayer.getPlayerState && activePlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+                try {
+                    activePlayer.playVideo();
+                    updateMusicUI(true);
+                } catch(e) {}
+            }
             
             // Trigger a minor confetti pop for celebration transitions
             if (currentSlideIndex === 4 || currentSlideIndex === 5) {
