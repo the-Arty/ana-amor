@@ -408,15 +408,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const letterBox = document.getElementById('typewriter-text');
     const restartBtn = document.getElementById('restart-story-btn');
 
-    const rawLetterText = `Minha linda Anabeatriz,
+    const rawLetterText = `Amor da minha vida,
 
 Como não estamos juntos hoje, fiz questão de preparar este cantinho virtual para você abrir e ler com carinho. Queria muito ter dinheiro para te dar o maior presente do mundo, mas espero que este gesto lembre você do quanto você é preciosa para mim.
 
-Estamos voltando, reconstruindo nossa história de forma mais madura, mais bonita e cheia de cumplicidade. A verdade é que, desde aquele 31 de dezembro, quando você jurou de pé junto que não tinha gostado do beijo (e hoje a gente ri disso!), minha vida ganhou outro brilho.
+Estamos voltando, reconstruindo nossa história de forma mais madura, mais bonita e cheia de cumplicidade. A verdade é que, desde aquele 31 de dezembro, quando você jurou de pé junto que não tinha gostado do beijo (e hoje tá pedindo esse beijo todo dia kkkkkk), minha vida ganhou outro brilho.
 
-Eu amo a nossa cumplicidade, as noites de pagode, nossas conversas e o fato de podermos maratonar séries inteiras juntos e nos reconhecermos nelas.
+Eu amo a nossa cumplicidade, as noites que vimos vários filmes e nossa série xodó euphoria, nossos passeios mesmo que poucos mas que eu adorei e quero fazer muito mais contigo.
 
-Aproveite muito a sua viagem. Estarei aqui pensando em você a cada segundo e esperando o seu retorno para a gente começar a resgatar todos os nossos vales especiais. 
+Aproveite muito a sua viagem. Estarei aqui pensando em você a cada segundo e esperando o seu retorno para a gente começar a resgatar todos os vales especiais. 
 
 Te amo daqui até a lua, com todos os seus detalhes e brilhos.
 
