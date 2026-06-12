@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const rawLetterText = `Minha linda Anabeatriz,
 
-Como você está viajando hoje, fiz questão de preparar este cantinho virtual para você abrir e ler no caminho. Queria muito ter dinheiro para te dar o maior presente do mundo, mas espero que este gesto lembre você do quanto você é preciosa para mim.
+Como não estamos juntos hoje, fiz questão de preparar este cantinho virtual para você abrir e ler com carinho. Queria muito ter dinheiro para te dar o maior presente do mundo, mas espero que este gesto lembre você do quanto você é preciosa para mim.
 
 Estamos voltando, reconstruindo nossa história de forma mais madura, mais bonita e cheia de cumplicidade. A verdade é que, desde aquele 31 de dezembro, quando você jurou de pé junto que não tinha gostado do beijo (e hoje a gente ri disso!), minha vida ganhou outro brilho.
 
