@@ -464,10 +464,6 @@ body {
 /* 3. EUPHORIA THEME */
 .euphoria-theme {
     background: linear-gradient(180deg, var(--bg-dark) 0%, #0d061f 50%, var(--bg-dark) 100%);
-    width: 100vw;
-    overflow: hidden;
-    min-height: 150vh;
-    padding: 120px 24px;
 }
 
 .euphoria-gallery {
@@ -1014,17 +1010,18 @@ main#main-content {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 24px;
-    padding-top: 40px;
-    padding-bottom: 95px; /* Space for navigation bar */
+    padding-top: 60px;
+    padding-bottom: 110px; /* Space for navigation bar */
     opacity: 0;
     pointer-events: none;
     transform: translateX(40px);
     transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: 1;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .story-step.active {
