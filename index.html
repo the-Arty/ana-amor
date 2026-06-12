@@ -48,186 +48,170 @@
 
     <!-- MAIN CONTENT (REVEALED AFTER UNLOCK) -->
     <main id="main-content" class="hidden">
-        
-        <!-- HEADER / HERO -->
-        <header class="hero">
-            <div class="hero-content">
-                <span class="subtitle font-syncopate">12 DE JUNHO</span>
-                <h1 class="title font-playfair">Feliz Dia dos Namorados, Ana</h1>
-                <p class="lead">Como você vai viajar amanhã, preparei esse espacinho só nosso para você levar contigo no bolso. Role para baixo e veja nossa história...</p>
-                <div class="scroll-indicator">
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-            </div>
-        </header>
+        <!-- Top progress bar (Instagram Stories style) -->
+        <div class="story-progress-bar">
+            <div class="progress-segment"><div class="progress-fill" style="width: 0%;"></div></div>
+            <div class="progress-segment"><div class="progress-fill" style="width: 0%;"></div></div>
+            <div class="progress-segment"><div class="progress-fill" style="width: 0%;"></div></div>
+            <div class="progress-segment"><div class="progress-fill" style="width: 0%;"></div></div>
+            <div class="progress-segment"><div class="progress-fill" style="width: 0%;"></div></div>
+            <div class="progress-segment"><div class="progress-fill" style="width: 0%;"></div></div>
+            <div class="progress-segment"><div class="progress-fill" style="width: 0%;"></div></div>
+            <div class="progress-segment"><div class="progress-fill" style="width: 0%;"></div></div>
+        </div>
 
-        <!-- 2. LINHA DO TEMPO (OUR STORY) -->
-        <section id="timeline-section" class="section">
-            <h2 class="section-title font-playfair">Nossa História 📖</h2>
-            <div class="timeline">
+        <div class="story-container">
+            <!-- Slide 1: Welcome Hero -->
+            <section class="story-step active" id="step-1">
+                <div class="hero-content">
+                    <span class="subtitle font-syncopate">12 DE JUNHO</span>
+                    <h1 class="title font-playfair">Feliz Dia dos Namorados, Ana</h1>
+                    <p class="lead">Como você vai viajar amanhã, preparei esse espacinho só nosso para você levar contigo no bolso. Toque no botão abaixo para ver nossa história...</p>
+                </div>
+            </section>
+
+            <!-- Slide 2: VLT 🚇 -->
+            <section class="story-step" id="step-2">
+                <div class="slide-content-card">
+                    <span class="date">Nossos Rolês</span>
+                    <h3>Rolê de VLT 🚇</h3>
+                    <img src="fotos/rolê de vlt.jpg" alt="Rolê de VLT" class="timeline-photo">
+                    <p>Nosso passeio de VLT, explorando a cidade de mãos dadas e colecionando sorrisos simples que fazem toda a diferença quando estamos juntos.</p>
+                </div>
+            </section>
+
+            <!-- Slide 3: Roda Gigante 🎡 -->
+            <section class="story-step" id="step-3">
+                <div class="slide-content-card">
+                    <span class="date">Um Dia Especial</span>
+                    <h3>Passeio na Roda Gigante 🎡</h3>
+                    <img src="fotos/passeio na roda gigante.jpg" alt="Passeio na Roda Gigante" class="timeline-photo">
+                    <p>A vista lá de cima era maravilhosa, mas a verdade é que nada se compara à sensação de olhar para o lado e ver você.</p>
+                </div>
+            </section>
+
+            <!-- Slide 4: Faculdade 🎓 -->
+            <section class="story-step" id="step-4">
+                <div class="slide-content-card">
+                    <span class="date">Parceria de Sempre</span>
+                    <h3>Trabalho da Faculdade 🎓</h3>
+                    <img src="fotos/ajudando no trabalho da faculdade.jpg" alt="Trabalho da Faculdade" class="timeline-photo">
+                    <p>Parceria de verdade é estar ao seu lado em cada momento de foco, te apoiando e dividindo os desafios dos estudos com muito carinho.</p>
+                </div>
+            </section>
+
+            <!-- Slide 5: Dia da Mulher 🌹 -->
+            <section class="story-step" id="step-5">
+                <div class="slide-content-card">
+                    <span class="date">Dia da Mulher</span>
+                    <h3>Celebrando Você 🌹</h3>
+                    <img src="fotos/dia da mulher.jpg" alt="Dia da Mulher" class="timeline-photo dia-mulher-photo">
+                    <p>Celebrando a mulher incrível, forte, batalhadora e doce que você é. Você me inspira e me enche de orgulho todos os dias do ano.</p>
+                </div>
+            </section>
+
+            <!-- Slide 6: Euphoria vibes 💜✨ -->
+            <section class="story-step euphoria-theme" id="step-6">
+                <div class="neon-glow-overlay"></div>
+                <div class="container">
+                    <span class="section-tag font-syncopate">ENTER EUPHORIA</span>
+                    <h2 class="section-title font-playfair">You're My Favorite Scene 💜✨</h2>
+                    
+                    <div class="euphoria-carousel-container">
+                        <div class="euphoria-slide active">
+                            <div class="slide-content">
+                                <span class="slide-num">01 / 03</span>
+                                <h3 class="font-syncopate">THE GLITTER EFFECT</h3>
+                                <p>"Nenhuma maquiagem de glitter de Euphoria brilha tanto quanto a luz do seu olhar quando você sorri para mim."</p>
+                            </div>
+                        </div>
+                        <div class="euphoria-slide">
+                            <div class="slide-content">
+                                <span class="slide-num">02 / 03</span>
+                                <h3 class="font-syncopate">OUR PLAYLIST</h3>
+                                <p>"Eu me perco nos seus detalhes assim como a gente se perde nas batidas eletrizantes de Labrinth. Você é minha trilha sonora favorita."</p>
+                            </div>
+                        </div>
+                        <div class="euphoria-slide">
+                            <div class="slide-content">
+                                <span class="slide-num">03 / 03</span>
+                                <h3 class="font-syncopate">RUE & JULES? NO, ANA & ME.</h3>
+                                <p>"Diferente dos casais complicados das telas, nosso amor está se reconstruindo mais maduro, mais forte e muito mais bonito. Eu escolho você todos os dias."</p>
+                            </div>
+                        </div>
+                        <button class="carousel-control prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-control next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 7: Vouchers 🎟️ -->
+            <section class="story-step" id="step-7">
+                <h2 class="section-title font-playfair">Cupons Especiais 🎟️</h2>
+                <p class="section-subtitle">Toque para raspar e ativar seu cupom!</p>
                 
-                <!-- Event 1 -->
-                <div class="timeline-item left reveal-on-scroll">
-                    <div class="timeline-img"><i class="fas fa-train-subway"></i></div>
-                    <div class="timeline-content">
-                        <span class="date">Nossos Rolês</span>
-                        <h3>Rolê de VLT 🚇</h3>
-                        <img src="fotos/rolê de vlt.jpg" alt="Rolê de VLT" class="timeline-photo">
-                        <p>Nosso passeio de VLT, explorando a cidade de mãos dadas e colecionando sorrisos simples que fazem toda a diferença quando estamos juntos.</p>
-                    </div>
-                </div>
-
-                <!-- Event 2 -->
-                <div class="timeline-item right reveal-on-scroll">
-                    <div class="timeline-img"><i class="fas fa-circle-dot"></i></div>
-                    <div class="timeline-content">
-                        <span class="date">Um Dia Especial</span>
-                        <h3>Passeio na Roda Gigante 🎡</h3>
-                        <img src="fotos/passeio na roda gigante.jpg" alt="Passeio na Roda Gigante" class="timeline-photo">
-                        <p>A vista lá de cima era maravilhosa, mas a verdade é que nada se compara à sensação de olhar para o lado e ver você.</p>
-                    </div>
-                </div>
-
-                <!-- Event 3 -->
-                <div class="timeline-item left reveal-on-scroll">
-                    <div class="timeline-img"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="timeline-content">
-                        <span class="date">Parceria de Sempre</span>
-                        <h3>Ajudando no Trabalho da Faculdade 🎓</h3>
-                        <img src="fotos/ajudando no trabalho da faculdade.jpg" alt="Trabalho da Faculdade" class="timeline-photo">
-                        <p>Parceria de verdade é estar ao seu lado em cada momento de foco, te apoiando e dividindo os desafios dos estudos com muito carinho.</p>
-                    </div>
-                </div>
-
-                <!-- Event 4 -->
-                <div class="timeline-item right reveal-on-scroll">
-                    <div class="timeline-img"><i class="fas fa-rose"></i></div>
-                    <div class="timeline-content">
-                        <span class="date">Dia da Mulher</span>
-                        <h3>Celebrando Você 🌹</h3>
-                        <img src="fotos/dia da mulher.jpg" alt="Dia da Mulher" class="timeline-photo dia-mulher-photo">
-                        <p>Celebrando a mulher incrível, forte, batalhadora e doce que você é. Você me inspira e me enche de orgulho todos os dias do ano.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 3. SEÇÃO EUPHORIA VIBES -->
-        <section id="euphoria-section" class="section euphoria-theme">
-            <div class="neon-glow-overlay"></div>
-            <div class="container">
-                <span class="section-tag font-syncopate">ENTER EUPHORIA</span>
-                <h2 class="section-title font-playfair">You're My Favorite Scene 💜✨</h2>
-                <p class="euphoria-intro">Nossa conexão tem aquela vibe intensa, cheia de brilho e inesquecível. Como a série que a gente maratonou junto, mas na nossa versão de amor de verdade.</p>
-                
-                <!-- Euphoria Gallery -->
-                <div class="euphoria-gallery">
-                    <div class="euphoria-gallery-card reveal-on-scroll">
-                        <img src="fotos/euphoria_vibe1.png" alt="Euphoria Vibe 1">
-                        <div class="gallery-card-caption">
-                            <h4 class="font-syncopate">BRILHO INCOMPARÁVEL ✨</h4>
-                            <p>Tão radiante e única que nenhuma cena de série consegue descrever o que sinto quando te olho.</p>
+                <div class="vouchers-grid">
+                    <!-- Voucher 1 -->
+                    <div class="voucher-card" id="voucher-beijo">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <i class="fas fa-film card-icon"></i>
+                                <h3>Vale Beijo de Cinema</h3>
+                                <p class="click-info">Clique para raspar</p>
+                            </div>
+                            <div class="card-back">
+                                <i class="fas fa-clapperboard card-icon-back"></i>
+                                <h3>ATIVADO! 🎬💋</h3>
+                                <p>Válido para um beijo longo, intenso e digno de tela de cinema no nosso reencontro.</p>
+                                <span class="voucher-code">CÓDIGO: ANA-BEIJO-100</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="euphoria-gallery-card reveal-on-scroll">
-                        <img src="fotos/euphoria_vibe2.png" alt="Euphoria Vibe 2">
-                        <div class="gallery-card-caption">
-                            <h4 class="font-syncopate">NOSSA TRILHA SONORA 🌌</h4>
-                            <p>Vivendo a nossa própria melodia, com toda a intensidade dos sentimentos mais puros.</p>
+
+                    <!-- Voucher 2 -->
+                    <div class="voucher-card" id="voucher-massagem">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <i class="fas fa-spa card-icon"></i>
+                                <h3>Vale Massagem</h3>
+                                <p class="click-info">Clique para raspar</p>
+                            </div>
+                            <div class="card-back">
+                                <i class="fas fa-hands-holding card-icon-back"></i>
+                                <h3>ATIVADO! 💆‍♀️✨</h3>
+                                <p>Válido para uma massagem super relaxante completa com óleos, música calma e sem pressa.</p>
+                                <span class="voucher-code">CÓDIGO: ANA-RELAX-99</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="euphoria-carousel-container">
-                    <div class="euphoria-slide active">
-                        <div class="slide-content">
-                            <span class="slide-num">01 / 03</span>
-                            <h3 class="font-syncopate">THE GLITTER EFFECT</h3>
-                            <p>"Nenhuma maquiagem de glitter de Euphoria brilha tanto quanto a luz do seu olhar quando você sorri para mim."</p>
-                        </div>
-                    </div>
-                    <div class="euphoria-slide">
-                        <div class="slide-content">
-                            <span class="slide-num">02 / 03</span>
-                            <h3 class="font-syncopate">OUR PLAYLIST</h3>
-                            <p>"Eu me perco nos seus detalhes assim como a gente se perde nas batidas eletrizantes de Labrinth. Você é minha trilha sonora favorita."</p>
-                        </div>
-                    </div>
-                    <div class="euphoria-slide">
-                        <div class="slide-content">
-                            <span class="slide-num">03 / 03</span>
-                            <h3 class="font-syncopate">RUE & JULES? NO, ANA & ME.</h3>
-                            <p>"Diferente dos casais complicados das telas, nosso amor está se reconstruindo mais maduro, mais forte e muito mais bonito. Eu escolho você todos os dias."</p>
-                        </div>
-                    </div>
-                    <button class="carousel-control prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carousel-control next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. CUPONS DO AMOR (VOUCHERS) -->
-        <section id="vouchers-section" class="section">
-            <h2 class="section-title font-playfair">Cupons Especiais 🎟️</h2>
-            <p class="section-subtitle">Você pode resgatar esses vales quando voltar de viagem. Clique para ativá-los!</p>
-            
-            <div class="vouchers-grid">
-                <!-- Voucher 1 -->
-                <div class="voucher-card" id="voucher-beijo">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <i class="fas fa-film card-icon"></i>
-                            <h3>Vale Beijo de Cinema</h3>
-                            <p class="click-info">Clique para raspar</p>
-                        </div>
-                        <div class="card-back">
-                            <i class="fas fa-clapperboard card-icon-back"></i>
-                            <h3>ATIVADO! 🎬💋</h3>
-                            <p>Válido para um beijo longo, intenso e digno de tela de cinema no nosso reencontro.</p>
-                            <span class="voucher-code">CÓDIGO: ANA-BEIJO-100</span>
-                        </div>
+            <!-- Slide 8: Letter ✉️ -->
+            <section class="story-step" id="step-8">
+                <div class="letter-container">
+                    <h2 class="font-playfair">Minha Carta Para Você ✉️</h2>
+                    <div class="letter-box">
+                        <div id="typewriter-text" class="typewriter-text"></div>
+                        <button id="start-letter-btn" class="letter-btn">Abrir Carta</button>
                     </div>
                 </div>
+                <footer>
+                    <p>Feito com todo o amor do mundo por quem te ama muito.</p>
+                    <p class="heart-footer">❤️ Feliz Dia dos Namorados! Boa viagem, volta logo. ❤️</p>
+                    <button id="restart-story-btn" class="restart-btn hidden">Reviver nossa história ❤️</button>
+                </footer>
+            </section>
+        </div>
 
-                <!-- Voucher 2 -->
-                <div class="voucher-card" id="voucher-massagem">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <i class="fas fa-spa card-icon"></i>
-                            <h3>Vale Massagem</h3>
-                            <p class="click-info">Clique para raspar</p>
-                        </div>
-                        <div class="card-back">
-                            <i class="fas fa-hands-holding card-icon-back"></i>
-                            <h3>ATIVADO! 💆‍♀️✨</h3>
-                            <p>Válido para uma massagem super relaxante completa com óleos, música calma e sem pressa.</p>
-                            <span class="voucher-code">CÓDIGO: ANA-RELAX-99</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. A CARTA DE AMOR -->
-        <section id="letter-section" class="section">
-            <div class="letter-container">
-                <h2 class="font-playfair">Minha Carta Para Você ✉️</h2>
-                <div class="letter-box">
-                    <div id="typewriter-text" class="typewriter-text">
-                        <!-- Will be populated by JS -->
-                    </div>
-                    <button id="start-letter-btn" class="letter-btn">Abrir Carta</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer>
-            <p>Feito com todo o amor do mundo por quem te ama muito.</p>
-            <p class="heart-footer">❤️ Feliz Dia dos Namorados! Boa viagem, volta logo. ❤️</p>
-        </footer>
-
+        <!-- Sticky bottom navigation for mobile -->
+        <div class="story-nav-container">
+            <button id="prev-story-btn" class="story-nav-btn prev hidden" aria-label="Voltar"><i class="fas fa-chevron-left"></i></button>
+            <button id="next-story-btn" class="story-nav-btn next">
+                <span id="story-btn-text">Começar nossa jornada fofa... 💖</span>
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
     </main>
 
     <!-- Confetti / Heart Effect Library (canvas-confetti) -->

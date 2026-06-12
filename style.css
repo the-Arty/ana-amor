@@ -961,3 +961,256 @@ footer p {
         font-size: 1.05rem;
     }
 }
+
+/* --- Storybook / Instagram-style Slideshow Layout --- */
+main#main-content {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.story-progress-bar {
+    position: fixed;
+    top: 12px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    gap: 6px;
+    z-index: 1000;
+}
+
+.progress-segment {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--primary-pink);
+    box-shadow: 0 0 8px var(--primary-pink);
+    transition: width 0.3s ease;
+}
+
+.story-container {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.story-step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    padding-top: 40px;
+    padding-bottom: 95px; /* Space for navigation bar */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(40px);
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+    overflow-y: auto;
+}
+
+.story-step.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.story-step.prev-step {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-40px);
+}
+
+/* Content cards for slides to look neat and isolated */
+.slide-content-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 74, 125, 0.15);
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.slide-content-card h3 {
+    font-size: 1.4rem;
+    font-family: var(--font-serif);
+    margin-bottom: 8px;
+}
+
+.slide-content-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+.slide-content-card .date {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--primary-pink);
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Override image behavior inside slides to fit screen heights */
+.slide-content-card img.timeline-photo {
+    width: 100%;
+    height: auto;
+    max-height: 32vh;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 12px 0;
+    border: 1px solid rgba(255, 74, 125, 0.2);
+}
+
+/* Bottom navigation bar for mobile story step sequence */
+.story-nav-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 85px;
+    background: linear-gradient(0deg, rgba(11, 8, 19, 0.98) 50%, rgba(11, 8, 19, 0) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    gap: 15px;
+    z-index: 1001;
+}
+
+.story-nav-btn {
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.story-nav-btn.prev {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.story-nav-btn.prev:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.story-nav-btn.next {
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    color: white;
+    flex: 1;
+    max-width: 320px;
+    height: 50px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    gap: 10px;
+    box-shadow: 0 0 15px rgba(255, 74, 125, 0.4);
+}
+
+.story-nav-btn.next:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(255, 74, 125, 0.6);
+}
+
+.story-nav-btn.next span {
+    font-weight: bold;
+}
+
+/* Hide helper classes */
+.story-nav-btn.hidden {
+    display: none !important;
+}
+
+/* Adjust Euphoria & Vouchers slides for mobile story fits */
+#step-6 .container {
+    max-width: 480px;
+    padding: 0;
+}
+#step-6 .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+#step-6 .euphoria-carousel-container {
+    margin-bottom: 0;
+}
+#step-7 .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+#step-7 .section-subtitle {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+#step-7 .vouchers-grid {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+}
+#step-7 .voucher-card {
+    height: 150px;
+    width: 100%;
+    max-width: 360px;
+}
+
+/* Letter step adjustments */
+#step-8 .letter-container {
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 480px;
+}
+#step-8 footer {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.75rem;
+}
+.restart-btn {
+    background: transparent;
+    border: 1px solid var(--primary-pink);
+    color: var(--primary-pink);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-top: 15px;
+    transition: var(--transition-smooth);
+}
+.restart-btn:hover {
+    background: var(--primary-pink);
+    color: white;
+}
+

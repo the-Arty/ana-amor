@@ -120,6 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
             lockScreen.classList.add('hidden');
             mainContent.classList.remove('hidden');
             audioControl.classList.remove('hidden');
+            isUnlocked = true;
+            if (window.initStoryView) window.initStoryView();
 
             // Start playing background music
             setTimeout(() => {
@@ -255,35 +257,99 @@ document.addEventListener('DOMContentLoaded', () => {
     initParticles();
     animateParticles();
 
-    // 3. SCROLL-TRIGGERED TRACK SWITCH & REVEAL EFFECTS
-    const euphoriaSection = document.getElementById('euphoria-section');
-    const scrollRevealItems = document.querySelectorAll('.reveal-on-scroll');
+    // 3. STORYBOOK SLIDESHOW NAVIGATION LOGIC
+    let currentSlideIndex = 0;
+    const storySteps = document.querySelectorAll('.story-step');
+    const progressFills = document.querySelectorAll('.progress-fill');
+    const prevStoryBtn = document.getElementById('prev-story-btn');
+    const nextStoryBtn = document.getElementById('next-story-btn');
+    const storyBtnText = document.getElementById('story-btn-text');
+    const storyNavContainer = document.querySelector('.story-nav-container');
 
-    window.addEventListener('scroll', () => {
-        if (!isMusicInitialized) return;
+    const buttonTexts = [
+        "Iniciar nossa jornada fofa... 💖",
+        "E qual foi nossa próxima parada? 🎡",
+        "Sempre parceiros, até nos estudos... 🎓",
+        "E no seu dia mais que especial... 🌹",
+        "Entre na nossa vibe mais intensa... 💜",
+        "Preparei alguns mimos para você... 🎟️",
+        "Por fim, abre a cartinha que te escrevi... ✉️",
+        "" // Hidden on the last slide
+    ];
 
-        // Music Switch based on scroll
-        const rect = euphoriaSection.getBoundingClientRect();
-        // If Euphoria section is visible in the viewport
-        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-            if (currentMusicSection !== 'euphoria') {
-                currentMusicSection = 'euphoria';
-                playMusic('euphoria');
-            }
-        } else {
-            if (currentMusicSection !== 'belo') {
-                currentMusicSection = 'belo';
-                playMusic('belo');
-            }
-        }
-
-        // Element scroll reveal animations
-        scrollRevealItems.forEach(item => {
-            const itemTop = item.getBoundingClientRect().top;
-            if (itemTop < window.innerHeight * 0.85) {
-                item.classList.add('visible');
+    function updateStoryView() {
+        // Update story step active classes
+        storySteps.forEach((step, idx) => {
+            step.classList.remove('active', 'prev-step');
+            if (idx === currentSlideIndex) {
+                step.classList.add('active');
+            } else if (idx < currentSlideIndex) {
+                step.classList.add('prev-step');
             }
         });
+
+        // Update top progress indicators
+        progressFills.forEach((fill, idx) => {
+            if (idx <= currentSlideIndex) {
+                fill.style.width = '100%';
+            } else {
+                fill.style.width = '0%';
+            }
+        });
+
+        // Toggle back button
+        if (currentSlideIndex > 0) {
+            prevStoryBtn.classList.remove('hidden');
+        } else {
+            prevStoryBtn.classList.add('hidden');
+        }
+
+        // Toggle main nav container visibility on the last step (the letter)
+        if (currentSlideIndex === 7) {
+            storyNavContainer.classList.add('hidden');
+        } else {
+            storyNavContainer.classList.remove('hidden');
+            storyBtnText.textContent = buttonTexts[currentSlideIndex];
+        }
+
+        // Auto transition background music based on step
+        if (isMusicInitialized) {
+            // Slide index 5 is the Euphoria slide (#step-6)
+            if (currentSlideIndex === 5) {
+                if (currentMusicSection !== 'euphoria') {
+                    currentMusicSection = 'euphoria';
+                    playMusic('euphoria');
+                }
+            } else {
+                if (currentMusicSection !== 'belo') {
+                    currentMusicSection = 'belo';
+                    playMusic('belo');
+                }
+            }
+        }
+    }
+
+    nextStoryBtn.addEventListener('click', () => {
+        if (currentSlideIndex < storySteps.length - 1) {
+            currentSlideIndex++;
+            updateStoryView();
+            
+            // Trigger a minor confetti pop for celebration transitions
+            if (currentSlideIndex === 4 || currentSlideIndex === 5) {
+                confetti({
+                    particleCount: 50,
+                    spread: 60,
+                    origin: { y: 0.8 }
+                });
+            }
+        }
+    });
+
+    prevStoryBtn.addEventListener('click', () => {
+        if (currentSlideIndex > 0) {
+            currentSlideIndex--;
+            updateStoryView();
+        }
     });
 
     // 4. EUPHORIA CAROUSEL LOGIC
@@ -332,6 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. TYPEWRITER LETTER EFFECT
     const letterBtn = document.getElementById('start-letter-btn');
     const letterBox = document.getElementById('typewriter-text');
+    const restartBtn = document.getElementById('restart-story-btn');
 
     const rawLetterText = `Minha linda Anabeatriz,
 
@@ -339,7 +406,7 @@ Como você está viajando hoje, fiz questão de preparar este cantinho virtual p
 
 Estamos voltando, reconstruindo nossa história de forma mais madura, mais bonita e cheia de cumplicidade. A verdade é que, desde aquele 31 de dezembro, quando você jurou de pé junto que não tinha gostado do beijo (e hoje a gente ri disso!), minha vida ganhou outro brilho.
 
-Eu amo a nossa cumplicidades, nossas conversas e o fato de podermos maratonar séries inteiras juntos e nos reconhecermos nelas.
+Eu amo a nossa cumplicidade, as noites de pagode, nossas conversas e o fato de podermos maratonar séries inteiras juntos e nos reconhecermos nelas.
 
 Aproveite muito a sua viagem. Estarei aqui pensando em você a cada segundo e esperando o seu retorno para a gente começar a resgatar todos os nossos vales especiais. 
 
@@ -358,6 +425,9 @@ Tutu ❤️`;
 
             // Auto scroll inside the box to follow text
             letterBox.scrollTop = letterBox.scrollHeight;
+        } else {
+            // Show restart button once letter finishes typing
+            if (restartBtn) restartBtn.classList.remove('hidden');
         }
     }
 
@@ -365,4 +435,20 @@ Tutu ❤️`;
         letterBtn.classList.add('hidden');
         typeLetter();
     });
+
+    if (restartBtn) {
+        restartBtn.addEventListener('click', () => {
+            currentSlideIndex = 0;
+            charIndex = 0;
+            letterBox.textContent = '';
+            letterBtn.classList.remove('hidden');
+            restartBtn.classList.add('hidden');
+            // Reset vouchers
+            vouchers.forEach(card => card.classList.remove('flipped'));
+            updateStoryView();
+        });
+    }
+
+    // Expose the view update trigger to lock screen success
+    window.initStoryView = updateStoryView;
 });
