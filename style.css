@@ -1149,6 +1149,7 @@ main#main-content {
 }
 
 /* Hide helper classes */
+.hidden:not(.lock-screen):not(.audio-control),
 .story-nav-btn.hidden {
     display: none !important;
 }
