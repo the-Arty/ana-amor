@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Anabeatriz: Feliz Dia dos Namorados ❤️</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Canvas for Glitter/Hearts -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Music Player (YouTube Iframe API will control these) -->
+    <div id="youtube-player-belo" class="hidden-player"></div>
+    <div id="youtube-player-euphoria" class="hidden-player"></div>
+
+    <!-- Floating Audio Control -->
+    <div id="audio-control" class="audio-control hidden">
+        <button id="play-pause-btn" aria-label="Play/Pause"><i class="fas fa-pause"></i></button>
+        <div class="track-info">
+            <span class="track-title">Tua Boca - Belo</span>
+            <span class="track-status">tocando de fundo...</span>
+        </div>
+    </div>
+
+    <!-- 1. TELA DE ENTRADA (LOCK SCREEN) -->
+    <section id="lock-screen" class="lock-screen active">
+        <div class="lock-card">
+            <div class="neon-heart"><i class="fas fa-heart"></i></div>
+            <h1 class="font-playfair">Para o amor da minha vida...</h1>
+            <p>Responda para entrar:</p>
+            <div class="question-container">
+                <p class="question">"Quem realmente falou que não gostou do primeiro beijo (no Ano Novo de 2025)?"</p>
+                <div class="input-group">
+                    <input type="text" id="unlock-answer" placeholder="Digite o nome..." autocomplete="off">
+                    <button id="unlock-btn"><i class="fas fa-arrow-right"></i></button>
+                </div>
+                <p id="error-message" class="error-message hidden">Hum... tenta de novo. Dica: Começa com A...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT (REVEALED AFTER UNLOCK) -->
+    <main id="main-content" class="hidden">
+        
+        <!-- HEADER / HERO -->
+        <header class="hero">
+            <div class="hero-content">
+                <span class="subtitle font-syncopate">12 DE JUNHO</span>
+                <h1 class="title font-playfair">Feliz Dia dos Namorados, Ana</h1>
+                <p class="lead">Como você vai viajar amanhã, preparei esse espacinho só nosso para você levar contigo no bolso. Role para baixo e veja nossa história...</p>
+                <div class="scroll-indicator">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. LINHA DO TEMPO (OUR STORY) -->
+        <section id="timeline-section" class="section">
+            <h2 class="section-title font-playfair">Nossa História 📖</h2>
+            <div class="timeline">
+                
+                <!-- Event 1 -->
+                <div class="timeline-item left reveal-on-scroll">
+                    <div class="timeline-img"><i class="fas fa-train-subway"></i></div>
+                    <div class="timeline-content">
+                        <span class="date">Nossos Rolês</span>
+                        <h3>Rolê de VLT 🚇</h3>
+                        <img src="fotos/rolê de vlt.jpg" alt="Rolê de VLT" class="timeline-photo">
+                        <p>Nosso passeio de VLT, explorando a cidade de mãos dadas e colecionando sorrisos simples que fazem toda a diferença quando estamos juntos.</p>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="timeline-item right reveal-on-scroll">
+                    <div class="timeline-img"><i class="fas fa-circle-dot"></i></div>
+                    <div class="timeline-content">
+                        <span class="date">Um Dia Especial</span>
+                        <h3>Passeio na Roda Gigante 🎡</h3>
+                        <img src="fotos/passeio na roda gigante.jpg" alt="Passeio na Roda Gigante" class="timeline-photo">
+                        <p>A vista lá de cima era maravilhosa, mas a verdade é que nada se compara à sensação de olhar para o lado e ver você.</p>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="timeline-item left reveal-on-scroll">
+                    <div class="timeline-img"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="timeline-content">
+                        <span class="date">Parceria de Sempre</span>
+                        <h3>Ajudando no Trabalho da Faculdade 🎓</h3>
+                        <img src="fotos/ajudando no trabalho da faculdade.jpg" alt="Trabalho da Faculdade" class="timeline-photo">
+                        <p>Parceria de verdade é estar ao seu lado em cada momento de foco, te apoiando e dividindo os desafios dos estudos com muito carinho.</p>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="timeline-item right reveal-on-scroll">
+                    <div class="timeline-img"><i class="fas fa-rose"></i></div>
+                    <div class="timeline-content">
+                        <span class="date">Dia da Mulher</span>
+                        <h3>Celebrando Você 🌹</h3>
+                        <img src="fotos/dia da mulher.jpg" alt="Dia da Mulher" class="timeline-photo dia-mulher-photo">
+                        <p>Celebrando a mulher incrível, forte, batalhadora e doce que você é. Você me inspira e me enche de orgulho todos os dias do ano.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. SEÇÃO EUPHORIA VIBES -->
+        <section id="euphoria-section" class="section euphoria-theme">
+            <div class="neon-glow-overlay"></div>
+            <div class="container">
+                <span class="section-tag font-syncopate">ENTER EUPHORIA</span>
+                <h2 class="section-title font-playfair">You're My Favorite Scene 💜✨</h2>
+                <p class="euphoria-intro">Nossa conexão tem aquela vibe intensa, cheia de brilho e inesquecível. Como a série que a gente maratonou junto, mas na nossa versão de amor de verdade.</p>
+                
+                <!-- Euphoria Gallery -->
+                <div class="euphoria-gallery">
+                    <div class="euphoria-gallery-card reveal-on-scroll">
+                        <img src="fotos/euphoria_vibe1.png" alt="Euphoria Vibe 1">
+                        <div class="gallery-card-caption">
+                            <h4 class="font-syncopate">BRILHO INCOMPARÁVEL ✨</h4>
+                            <p>Tão radiante e única que nenhuma cena de série consegue descrever o que sinto quando te olho.</p>
+                        </div>
+                    </div>
+                    <div class="euphoria-gallery-card reveal-on-scroll">
+                        <img src="fotos/euphoria_vibe2.png" alt="Euphoria Vibe 2">
+                        <div class="gallery-card-caption">
+                            <h4 class="font-syncopate">NOSSA TRILHA SONORA 🌌</h4>
+                            <p>Vivendo a nossa própria melodia, com toda a intensidade dos sentimentos mais puros.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="euphoria-carousel-container">
+                    <div class="euphoria-slide active">
+                        <div class="slide-content">
+                            <span class="slide-num">01 / 03</span>
+                            <h3 class="font-syncopate">THE GLITTER EFFECT</h3>
+                            <p>"Nenhuma maquiagem de glitter de Euphoria brilha tanto quanto a luz do seu olhar quando você sorri para mim."</p>
+                        </div>
+                    </div>
+                    <div class="euphoria-slide">
+                        <div class="slide-content">
+                            <span class="slide-num">02 / 03</span>
+                            <h3 class="font-syncopate">OUR PLAYLIST</h3>
+                            <p>"Eu me perco nos seus detalhes assim como a gente se perde nas batidas eletrizantes de Labrinth. Você é minha trilha sonora favorita."</p>
+                        </div>
+                    </div>
+                    <div class="euphoria-slide">
+                        <div class="slide-content">
+                            <span class="slide-num">03 / 03</span>
+                            <h3 class="font-syncopate">RUE & JULES? NO, ANA & ME.</h3>
+                            <p>"Diferente dos casais complicados das telas, nosso amor está se reconstruindo mais maduro, mais forte e muito mais bonito. Eu escolho você todos os dias."</p>
+                        </div>
+                    </div>
+                    <button class="carousel-control prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-control next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CUPONS DO AMOR (VOUCHERS) -->
+        <section id="vouchers-section" class="section">
+            <h2 class="section-title font-playfair">Cupons Especiais 🎟️</h2>
+            <p class="section-subtitle">Você pode resgatar esses vales quando voltar de viagem. Clique para ativá-los!</p>
+            
+            <div class="vouchers-grid">
+                <!-- Voucher 1 -->
+                <div class="voucher-card" id="voucher-beijo">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-film card-icon"></i>
+                            <h3>Vale Beijo de Cinema</h3>
+                            <p class="click-info">Clique para raspar</p>
+                        </div>
+                        <div class="card-back">
+                            <i class="fas fa-clapperboard card-icon-back"></i>
+                            <h3>ATIVADO! 🎬💋</h3>
+                            <p>Válido para um beijo longo, intenso e digno de tela de cinema no nosso reencontro.</p>
+                            <span class="voucher-code">CÓDIGO: ANA-BEIJO-100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Voucher 2 -->
+                <div class="voucher-card" id="voucher-massagem">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-spa card-icon"></i>
+                            <h3>Vale Massagem</h3>
+                            <p class="click-info">Clique para raspar</p>
+                        </div>
+                        <div class="card-back">
+                            <i class="fas fa-hands-holding card-icon-back"></i>
+                            <h3>ATIVADO! 💆‍♀️✨</h3>
+                            <p>Válido para uma massagem super relaxante completa com óleos, música calma e sem pressa.</p>
+                            <span class="voucher-code">CÓDIGO: ANA-RELAX-99</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. A CARTA DE AMOR -->
+        <section id="letter-section" class="section">
+            <div class="letter-container">
+                <h2 class="font-playfair">Minha Carta Para Você ✉️</h2>
+                <div class="letter-box">
+                    <div id="typewriter-text" class="typewriter-text">
+                        <!-- Will be populated by JS -->
+                    </div>
+                    <button id="start-letter-btn" class="letter-btn">Abrir Carta</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>Feito com todo o amor do mundo por quem te ama muito.</p>
+            <p class="heart-footer">❤️ Feliz Dia dos Namorados! Boa viagem, volta logo. ❤️</p>
+        </footer>
+
+    </main>
+
+    <!-- Confetti / Heart Effect Library (canvas-confetti) -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <!-- YouTube Player Iframe API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+</html>
