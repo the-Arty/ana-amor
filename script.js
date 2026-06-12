@@ -55,26 +55,26 @@ function onPlayerReady(event) {
 // Function to switch music smoothly
 function playMusic(playerType) {
     if (!playerBelo || !playerEuphoria) return;
-    
+
     try {
         if (playerType === 'belo') {
             if (activePlayer === playerBelo) return;
-            
+
             if (playerEuphoria.getPlayerState && playerEuphoria.getPlayerState() === YT.PlayerState.PLAYING) {
                 playerEuphoria.pauseVideo();
             }
-            
+
             playerBelo.playVideo();
             activePlayer = playerBelo;
             currentTrackTitle = "Tua Boca - Belo";
             updateMusicUI(true);
         } else if (playerType === 'euphoria') {
             if (activePlayer === playerEuphoria) return;
-            
+
             if (playerBelo.getPlayerState && playerBelo.getPlayerState() === YT.PlayerState.PLAYING) {
                 playerBelo.pauseVideo();
             }
-            
+
             playerEuphoria.playVideo();
             activePlayer = playerEuphoria;
             currentTrackTitle = "All For Us - Labrinth & Zendaya";
@@ -89,9 +89,9 @@ function updateMusicUI(isPlaying) {
     const playPauseBtn = document.getElementById('play-pause-btn');
     const trackTitleSpan = document.querySelector('.track-title');
     const trackStatusSpan = document.querySelector('.track-status');
-    
+
     trackTitleSpan.textContent = currentTrackTitle;
-    
+
     if (isPlaying) {
         playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
         trackStatusSpan.textContent = "tocando de fundo...";
@@ -103,7 +103,7 @@ function updateMusicUI(isPlaying) {
 
 // Initialize controls after DOM loads
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Lock Screen Logic
     const unlockBtn = document.getElementById('unlock-btn');
     const unlockInput = document.getElementById('unlock-answer');
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const errorMessage = document.getElementById('error-message');
     const audioControl = document.getElementById('audio-control');
-    
+
     function checkAnswer() {
         const ans = unlockInput.value.trim().toLowerCase();
         // Accepts: anabeatriz, ana beatriz, ana, aninha
@@ -120,21 +120,21 @@ document.addEventListener('DOMContentLoaded', () => {
             lockScreen.classList.add('hidden');
             mainContent.classList.remove('hidden');
             audioControl.classList.remove('hidden');
-            
+
             // Start playing background music
             setTimeout(() => {
                 try {
                     // Pre-activate both players so mobile doesn't block transitions on scroll
                     playerEuphoria.playVideo();
                     playerEuphoria.pauseVideo();
-                } catch(e) {
+                } catch (e) {
                     console.log("Erro ao inicializar player secundário:", e);
                 }
-                
+
                 playMusic('belo');
                 isMusicInitialized = true;
             }, 500);
-            
+
             // Trigger initial confetti explosion
             confetti({
                 particleCount: 150,
@@ -146,17 +146,17 @@ document.addEventListener('DOMContentLoaded', () => {
             unlockInput.value = '';
         }
     }
-    
+
     unlockBtn.addEventListener('click', checkAnswer);
     unlockInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') checkAnswer();
     });
-    
+
     // Play/Pause Floating button logic
     const playPauseBtn = document.getElementById('play-pause-btn');
     playPauseBtn.addEventListener('click', () => {
         if (!activePlayer) return;
-        
+
         const state = activePlayer.getPlayerState();
         if (state === YT.PlayerState.PLAYING) {
             activePlayer.pauseVideo();
@@ -170,17 +170,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. CANVAS PARTICLES (GLITTER & HEARTS)
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
-    
+
     let particlesArray = [];
-    
+
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
-    
+
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
-    
+
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
@@ -192,11 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
             this.opacity = Math.random() * 0.5 + 0.2;
             this.shape = Math.random() > 0.8 ? 'heart' : 'star';
         }
-        
+
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
-            
+
             if (this.y > canvas.height) {
                 this.y = 0;
                 this.x = Math.random() * canvas.width;
@@ -205,14 +205,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.x = Math.random() * canvas.width;
             }
         }
-        
+
         draw() {
             ctx.save();
             ctx.globalAlpha = this.opacity;
             ctx.fillStyle = this.color;
             ctx.shadowBlur = 10;
             ctx.shadowColor = this.color;
-            
+
             if (this.shape === 'heart') {
                 // Draw small heart
                 ctx.beginPath();
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.restore();
         }
     }
-    
+
     function initParticles() {
         particlesArray = [];
         const quantity = Math.floor((canvas.width * canvas.height) / 15000);
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
             particlesArray.push(new Particle());
         }
     }
-    
+
     function animateParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < particlesArray.length; i++) {
@@ -251,17 +251,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         requestAnimationFrame(animateParticles);
     }
-    
+
     initParticles();
     animateParticles();
 
     // 3. SCROLL-TRIGGERED TRACK SWITCH & REVEAL EFFECTS
     const euphoriaSection = document.getElementById('euphoria-section');
     const scrollRevealItems = document.querySelectorAll('.reveal-on-scroll');
-    
+
     window.addEventListener('scroll', () => {
         if (!isMusicInitialized) return;
-        
+
         // Music Switch based on scroll
         const rect = euphoriaSection.getBoundingClientRect();
         // If Euphoria section is visible in the viewport
@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 playMusic('belo');
             }
         }
-        
+
         // Element scroll reveal animations
         scrollRevealItems.forEach(item => {
             const itemTop = item.getBoundingClientRect().top;
@@ -291,17 +291,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('nextSlide');
     const prevBtn = document.getElementById('prevSlide');
     let currentSlide = 0;
-    
+
     function showSlide(index) {
         slides.forEach(slide => slide.classList.remove('active'));
         slides[index].classList.add('active');
     }
-    
+
     nextBtn.addEventListener('click', () => {
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
     });
-    
+
     prevBtn.addEventListener('click', () => {
         currentSlide = (currentSlide - 1 + slides.length) % slides.length;
         showSlide(currentSlide);
@@ -309,17 +309,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. VOUCHERS CLICK INTERACTION (CARD FLIP & CONFETTI)
     const vouchers = document.querySelectorAll('.voucher-card');
-    
+
     vouchers.forEach(card => {
         card.addEventListener('click', () => {
             if (!card.classList.contains('flipped')) {
                 card.classList.add('flipped');
-                
+
                 // Explode confetti from the clicked card's general position
                 const rect = card.getBoundingClientRect();
                 const x = (rect.left + rect.width / 2) / window.innerWidth;
                 const y = (rect.top + rect.height / 2) / window.innerHeight;
-                
+
                 confetti({
                     particleCount: 50,
                     spread: 60,
@@ -332,14 +332,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. TYPEWRITER LETTER EFFECT
     const letterBtn = document.getElementById('start-letter-btn');
     const letterBox = document.getElementById('typewriter-text');
-    
+
     const rawLetterText = `Minha linda Anabeatriz,
 
 Como você está viajando hoje, fiz questão de preparar este cantinho virtual para você abrir e ler no caminho. Queria muito ter dinheiro para te dar o maior presente do mundo, mas espero que este gesto lembre você do quanto você é preciosa para mim.
 
 Estamos voltando, reconstruindo nossa história de forma mais madura, mais bonita e cheia de cumplicidade. A verdade é que, desde aquele 31 de dezembro, quando você jurou de pé junto que não tinha gostado do beijo (e hoje a gente ri disso!), minha vida ganhou outro brilho.
 
-Eu amo a nossa cumplicidade, as noites de pagode, nossas conversas e o fato de podermos maratonar séries inteiras juntos e nos reconhecermos nelas.
+Eu amo a nossa cumplicidades, nossas conversas e o fato de podermos maratonar séries inteiras juntos e nos reconhecermos nelas.
 
 Aproveite muito a sua viagem. Estarei aqui pensando em você a cada segundo e esperando o seu retorno para a gente começar a resgatar todos os nossos vales especiais. 
 
@@ -349,18 +349,18 @@ Com todo o meu amor,
 Tutu ❤️`;
 
     let charIndex = 0;
-    
+
     function typeLetter() {
         if (charIndex < rawLetterText.length) {
             letterBox.textContent += rawLetterText.charAt(charIndex);
             charIndex++;
             setTimeout(typeLetter, 35); // Adjust typing speed here
-            
+
             // Auto scroll inside the box to follow text
             letterBox.scrollTop = letterBox.scrollHeight;
         }
     }
-    
+
     letterBtn.addEventListener('click', () => {
         letterBtn.classList.add('hidden');
         typeLetter();

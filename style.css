@@ -55,11 +55,14 @@ body {
 
 /* Hidden players styling */
 .hidden-player {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
+    position: fixed;
+    top: -1000px;
+    left: -1000px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.01;
     pointer-events: none;
+    z-index: -9999;
 }
 
 /* Background Canvas for Particles */
@@ -408,7 +411,7 @@ body {
 
 .timeline-photo {
     width: 100%;
-    height: 220px;
+    height: 380px;
     object-fit: cover;
     border-radius: 12px;
     margin: 15px 0;
@@ -423,7 +426,7 @@ body {
 }
 
 .dia-mulher-photo {
-    object-position: center top;
+    object-position: center 20%;
 }
 
 .timeline-item:hover .timeline-content {
