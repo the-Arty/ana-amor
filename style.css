@@ -284,6 +284,27 @@ body {
     background: var(--primary-purple);
 }
 
+.confirm-access-btn {
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(255, 74, 125, 0.4);
+    margin-top: 5px;
+    font-family: var(--font-sans);
+    width: 100%;
+}
+
+.confirm-access-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 74, 125, 0.6);
+}
+
 .error-message {
     color: var(--primary-pink);
     font-size: 0.85rem;
